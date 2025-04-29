@@ -1,0 +1,24 @@
+spring:
+  ai:
+    openai:
+      api-key: ${api-key}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          temperature: 0.7
+          model: deepseek-chat
+      embedding:
+        enabled: false
+  application:
+    name: spring-ai-itaiit
+  config:
+    import: nacos:nacos-config.properties
+  cloud:
+    nacos:
+      config:
+        file-extension: properties
+        name: nacos-config
+        username: nacos
+        password: nacos
+        namespace: d7da1cc0-7ed5-43a6-9a4e-d32edb8b6043
+        server-addr: localhost:8848
