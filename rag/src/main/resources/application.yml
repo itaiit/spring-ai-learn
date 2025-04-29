@@ -1,5 +1,7 @@
 spring:
   ai:
+    model:
+      embedding: bge
     openai:
       api-key: ${api-key}
       base-url: https://api.deepseek.com
@@ -8,7 +10,13 @@ spring:
           temperature: 0.7
           model: deepseek-chat
       embedding:
-        enabled: false
+        base-url: http://localhost:30888
+        embeddings-path: /embed
+    vectorstore:
+      redis:
+        initialize-schema: true
+        index-name: custom-index
+        prefix: custom-prefix
   application:
     name: spring-ai-itaiit
   config:
@@ -22,3 +30,7 @@ spring:
         password: nacos
         namespace: d7da1cc0-7ed5-43a6-9a4e-d32edb8b6043
         server-addr: localhost:8848
+  data:
+    redis:
+      host: localhost
+      port: 6379
