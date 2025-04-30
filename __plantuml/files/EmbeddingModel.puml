@@ -1,0 +1,21 @@
+@startuml
+autonumber
+-> User_Defined: embed(Document document)
+note right
+    需要实现的方法
+end note
+activate User_Defined
+User_Defined -> Document: getFormattedContent
+User_Defined <-- Document: string
+User_Defined --> EmbeddingModel: embed(List<String> texts)
+deactivate User_Defined
+-> EmbeddingModel: embed(List<String> texts)
+activate EmbeddingModel
+EmbeddingModel -> EmbeddingModel: call(EmbeddingRequest request)
+<-- EmbeddingModel:
+deactivate EmbeddingModel
+-> User_Defined: call(EmbeddingRequest request)
+note right
+    需要实现的方法
+end note
+@enduml
