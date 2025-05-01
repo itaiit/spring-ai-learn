@@ -26,6 +26,7 @@
     <modules>
         <module>starter-stdio-server</module>
         <module>rag</module>
+        <module>ollama-rag</module>
         <module>__plantuml</module>
     </modules>
 
