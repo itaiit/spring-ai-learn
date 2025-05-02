@@ -10,6 +10,7 @@ import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,8 @@ import java.util.Optional;
 /**
  * 使用ChatModel来实现
  */
-@RestController("/cm")
+@RestController()
+@RequestMapping("/cm")
 public class OriginChatModel {
 
     private final ChatModel chatModel;
