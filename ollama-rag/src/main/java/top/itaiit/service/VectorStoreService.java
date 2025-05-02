@@ -6,8 +6,8 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class VectorStoreService {
@@ -19,7 +19,7 @@ public class VectorStoreService {
     }
 
     public List<Document> saveToVectorStore(List<String> documents) {
-        List<Document> documentsToAdd = documents.stream().map(word -> new Document(word, Map.of("meta1", "meta1"))).toList();
+        List<Document> documentsToAdd = documents.stream().map(word -> new Document(word, Collections.emptyMap())).toList();
         // Add the documents to Redis
         vectorStore.add(documentsToAdd);
         // Retrieve documents similar to a query
