@@ -9,7 +9,7 @@ spring:
         options:
           temperature: 0.7
           model: qwen3:4b
-#        model: qwen3:4b # 和options.model中的效果一样
+      #        model: qwen3:4b # 和options.model中的效果一样
       embedding:
         model: nomic-embed-text:latest
       init:
