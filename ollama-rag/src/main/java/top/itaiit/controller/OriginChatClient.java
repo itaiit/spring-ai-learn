@@ -8,9 +8,9 @@ import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.ai.tool.ToolCallback;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import top.itaiit.advisor.ReReadingAdvisor;
 import top.itaiit.service.VectorStoreService;
 import top.itaiit.tool.DateTimeTools;
 
@@ -53,6 +53,7 @@ public class OriginChatClient {
                 )
                 .build();
         String answer = chatClient.prompt(prompt)
+                .advisors(new ReReadingAdvisor())
                 .call()
                 .content();
 
