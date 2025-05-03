@@ -10,5 +10,7 @@
 
 ollama 0.6.6
 - embedding model：nomic-embed-text:latest
-- qwen3:4b
+- chat model：
+  - qwen3:4b
+  - gemma3:4b
 
