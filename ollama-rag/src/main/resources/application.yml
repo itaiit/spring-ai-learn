@@ -1,18 +1,19 @@
 spring:
   ai:
-#    model:
+    model:
 #      embedding: ollama
-#      chat: ollama
+      chat: ollama
     ollama:
       base-url: http://localhost:11434/
       chat:
-        model: qwen3:4b
         options:
           temperature: 0.7
+          model: qwen3:4b
+#        model: qwen3:4b # 和options.model中的效果一样
       embedding:
         model: nomic-embed-text:latest
       init:
-        pull-model-strategy: never
+        pull-model-strategy: when_missing
         embedding:
           include: true
     vectorstore:

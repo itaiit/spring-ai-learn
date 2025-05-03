@@ -38,6 +38,7 @@ public class OriginChatClient {
         Prompt prompt = Prompt.builder()
                 .messages(tip)
                 .chatOptions(ChatOptions.builder()
+                        .model("gemma3:4b") // 在运行的时候指定使用的模型
                         .topK(8)
                         .build()
                 )
