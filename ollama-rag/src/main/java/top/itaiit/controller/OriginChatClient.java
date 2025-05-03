@@ -6,11 +6,12 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ai.document.Document;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import top.itaiit.service.VectorStoreService;
+
+import java.util.List;
 
 /**
  * 使用ChatClient来实现
@@ -20,9 +21,11 @@ import reactor.core.publisher.Flux;
 public class OriginChatClient {
 
     private final ChatClient chatClient;
+    private final VectorStoreService vectorStoreService;
 
-    public OriginChatClient(ChatClient.Builder chatClientBuilder) {
+    public OriginChatClient(ChatClient.Builder chatClientBuilder, VectorStoreService vectorStoreService) {
         this.chatClient = chatClientBuilder.build();
+        this.vectorStoreService = vectorStoreService;
     }
 
     /**
@@ -76,6 +79,11 @@ public class OriginChatClient {
                 .content();
 
         return content;
+    }
+
+    @PostMapping("/origin/addVector")
+    public List<Document> addVector(@RequestBody List<String> documents) {
+        return vectorStoreService.saveToVectorStore(documents);
     }
 
 }
