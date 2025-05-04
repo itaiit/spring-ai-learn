@@ -1,0 +1,35 @@
+spring:
+  ai:
+    mcp:
+      client:
+        enabled: true
+        stdio:
+          connections:
+            github:
+              command: "npx"
+              args:
+                - "-y"
+                - "@modelcontextprotocol/server-github"
+              env:
+                GITHUB_PERSONAL_ACCESS_TOKEN: ${github-key}
+#          servers-configuration: classpath:mcp-server.json
+        toolcallback:
+          enabled: true
+    openai:
+      api-key: ${api-key}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          temperature: 0.5
+          model: deepseek-chat
+  config:
+    import: nacos:nacos-config.properties
+  cloud:
+    nacos:
+      config:
+        file-extension: properties
+        name: nacos-config
+        username: nacos
+        password: nacos
+        namespace: d7da1cc0-7ed5-43a6-9a4e-d32edb8b6043
+        server-addr: localhost:8848

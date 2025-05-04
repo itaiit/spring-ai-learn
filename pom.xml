@@ -28,6 +28,7 @@
         <module>rag</module>
         <module>ollama-rag</module>
         <module>__plantuml</module>
+        <module>mcp</module>
     </modules>
 
     <dependencyManagement>
